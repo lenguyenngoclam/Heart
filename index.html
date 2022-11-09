@@ -4,9 +4,18 @@
         <meta charset="UTF-8"/>
         <title>Heart</title>
         <link rel="stylesheet" href="heart_beat.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            setInterval(function() {
+                $("#canvas-container #text").fadeToggle();
+            }, 1500);
+        </script>
     </head>
     <body>
-        <canvas id="heart"></canvas>
+        <div id="canvas-container">
+            <span id="text">Ro iu Ny</span>
+            <canvas id="heart"></canvas>
+        </div>
         <script src="heart.js"></script>
     </body>
 </html>

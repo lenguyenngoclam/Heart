@@ -9,8 +9,8 @@ let settings = {
       length:   500, // maximum amount of particles
       duration:   2, // particle duration in sec
       velocity: 50, // particle velocity in pixels/sec
-      effect: -0.75, // play with this for a nice effect
-      size:      5, // particle size in pixels
+      effect: -1.5, // play with this for a nice effect
+      size:      7, // particle size in pixels
     },
 };  
   /*
@@ -259,8 +259,8 @@ let draw_heart = function (canvas, x_deg, y_deg, particle_size, particle_color, 
     function pointOnHeart(t) {
   
         return new Point(
-            160 * Math.pow(Math.sin(t), 3),
-            130 * Math.cos(t) - 50 * Math.cos(2 * t) - 20 * Math.cos(3 * t) - 10 * Math.cos(4 * t)
+            x_deg * Math.pow(Math.sin(t), 3),
+            y_deg * Math.cos(t) - 50 * Math.cos(2 * t) - 20 * Math.cos(3 * t) - 10 * Math.cos(4 * t)
         );
   
     }
@@ -304,7 +304,7 @@ let draw_heart = function (canvas, x_deg, y_deg, particle_size, particle_color, 
         context.closePath();
         // create the fill
   
-        context.fillStyle = particle_color;
+        context.fillStyle = "#e5212b";
   
         context.fill();
   
@@ -372,9 +372,14 @@ let draw_heart = function (canvas, x_deg, y_deg, particle_size, particle_color, 
   
 };
 
+setInterval(function () {
+    settings.particles.effect -= 8.0;
+}, 1.45);
+setInterval(function () {
+    settings.particles.effect += 8.0;
+}, 1.55);
+
 draw_heart(document.getElementById('heart'), 160, 130, 30, '#e35f87', 50, 500);
 // draw_heart(document.getElementById('canvas-container'), 150, 130, 20, '#e35f87', 20, 300); 
 // draw_heart(document.getElementById('heart'), 120, 110, 10, '#e35f87', 10, 200);  
 // draw_heart(document.getElementById('heart'), 130, 120, 15, '#e35f87', 30, 200);  
-// draw_heart(document.getElementById('heart'), 80, 50, 20, '#e35f87', 30, 300);   
-
